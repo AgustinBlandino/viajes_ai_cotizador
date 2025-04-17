@@ -7,6 +7,7 @@ import os
 import json
 import logging
 import re
+import uvicorn
 
 # Setup logging
 logging.basicConfig(
@@ -155,3 +156,9 @@ def extraer_json_desde_texto(texto):
         except json.JSONDecodeError:
             continue
     return None
+
+
+# Iniciar el servidor con uvicorn, escuchando en todas las interfaces
+if __name__ == "__main__":
+    logging.info("🚀 Iniciando la aplicación en el puerto 8000.")
+    uvicorn.run(app, host="0.0.0.0", port=8000)
